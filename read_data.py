@@ -102,21 +102,6 @@ def main():
         'churn_rate': churn_numeric.mean() if 'churn' in df.columns else 0
     }
 
-    # Сохраняем в файл
-    import json
-    with open('dataset_info.json', 'w', encoding='utf-8') as f:
-        # Преобразуем numpy типы в стандартные Python типы
-        info_serializable = {
-            'shape': list(dataset_info['shape']),
-            'numeric_cols': dataset_info['numeric_cols'],
-            'categorical_cols': dataset_info['categorical_cols'],
-            'churn_distribution': {str(k): int(v) for k, v in dataset_info['churn_distribution'].items()},
-            'churn_rate': float(dataset_info['churn_rate'])
-        }
-        json.dump(info_serializable, f, indent=2, ensure_ascii=False)
-    print("\nИнформация о датасете сохранена в 'dataset_info.json'")
-
-    return df
 
 
 if __name__ == "__main__":
